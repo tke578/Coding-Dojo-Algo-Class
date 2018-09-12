@@ -1,0 +1,54 @@
+function arrConcat(arr1,arr2){
+  var newArray = [];
+  for(var first = 0; first < arr1.length; first++){
+    newArray[first] = arr1[first];
+  }
+  for(var second = 0; second < arr2.length; second++){
+    newArray[newArray.length] = arr2[second];
+  }
+  return newArray;
+}
+console.log(arrConcat([],[67,87,78,98]));
+
+function slowFactorial(num){
+  if(num < 0){return 0;}
+  var fact = 1;
+  for(var i = 2; i <= num; i++){
+    fact *= i;
+  }
+  return fact;
+}
+console.log(slowFactorial(4));
+
+function fastFactorial(num){
+  if(num < 0){return 0;}
+  var result = num;
+  while(num > 1){
+    num--;
+    result *= num;
+    
+   }
+  return result;
+}
+console.log(fastFactorial(5));
+
+function fastFactorialRecursive(num){
+  if(num < 0 || num == 0){
+    return 1;
+  }else{
+    return num * fastFactorialRecursive(num-1);
+  }
+}
+console.log(fastFactorialRecursive(5));
+
+function shuffle(arr){
+  for(var i = 0; i < arr.length; i++){
+    var pos = Math.floor(Math.random() * Math.floor(arr.length));
+    var tmp = arr[i];
+    arr[i] = arr[pos];
+    arr[pos] = tmp;
+  }
+  return arr;
+}
+
+console.log(shuffle([1,2,3,4,5,6,7,8,9,10]));

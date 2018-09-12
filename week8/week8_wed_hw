@@ -1,0 +1,101 @@
+function btNode(value) {
+  this.val = value;
+  this.left = null;
+  this.right = null;
+}
+function bst(){
+  this.root = null;
+}
+// WITHOUT RECURSION
+bst.prototype.size = function(){
+  if(!this.root){
+    return 0;
+  }
+  var currentNodeRight = this.root.right;
+  var currentNodeLeft = this.root.left;
+  var count = 1;
+  while(currentNodeRight){
+      count ++;
+      currentNodeRight = currentNodeRight.right
+  }
+  while(currentNodeLeft){
+    count ++;
+    currentNodeLeft = currentNodeLeft.left;
+  }
+  return count;
+}
+
+// Improved ALGO with recursion
+bst.prototype.size = function(){
+  var sizeOfNodes = 0;
+  if(this.root){
+    count(this.root);
+  }
+  function count(node){
+    sizeOfNodes ++;
+    if(node.left){
+      count(node.left);
+    }
+    if(node.right){
+      count(node.right);
+    }
+  }
+  return sizeOfNodes;
+}
+
+bst.prototype.isEmpty = function(){
+  if(!this.root){
+    return false;
+  }
+  return true;
+}
+
+bst.prototype.remove = function(val){
+  if(!this.root){
+    return false;
+  }
+  var currentNode = this.root;
+  while(currentNode){
+    if(currentNode.val === val){
+      currentNode.val = null;
+      return;
+    }else if(val > currentNode.val){
+      currentNode = currentNode.right
+    }else{
+      currentNode = currentNode.left;
+    }
+  }
+  return false;
+}
+
+bst.prototype.removeAll = function(){
+  if(this.root){
+    resetValues(this.root);
+  }
+  function resetValues(node){
+    node.val = null;
+    if(node.left){
+      console.log("This is left before", node.left);
+      resetValues(node.left);
+      console.log("This is left after", node.left);
+    }
+    if(node.right){
+      console.log("This is right before", node.right);
+      resetValues(node.right);
+      console.log("This is right after", node.right);
+    }
+  }
+  return this.root;
+}
+
+var myBst = new bst();
+myBst.add(5);
+myBst.add(6);
+myBst.add(7);
+myBst.add(4);
+myBst.add(50);
+myBst.add(3);
+console.log(myBst.isEmpty());
+console.log(myBst.remove(7));
+console.log(myBst.removeAll());
+console.log(myBst.size());

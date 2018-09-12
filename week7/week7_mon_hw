@@ -1,0 +1,41 @@
+function rSigma(num){
+//   base case
+  if(num <= 0){
+    return 0;
+  }else{
+    return Math.floor(num) + rSigma(Math.floor(num) - 1);
+  }
+}
+
+console.log(rSigma(-1));
+
+function rBinarySearch(arr,value){
+//   base case
+  if(arr.length){
+    if(arr[arr.length-1] === value){
+      return true;
+    }else{
+      arr.pop();
+      return rBinarySearch(arr, value)
+    }
+  }
+//   array will eventually be empty
+  return false;
+}
+
+console.log(rBinarySearch([1,2,3], 0));
+
+function rFib(num){
+//   first base case
+  if(num <= 0){
+    return 0
+//     second base case
+  }else if(num === 1){
+    return 1
+//     recursive call
+  }else{
+    return rFib(num-1)+rFib(num-2)
+  }
+}
+
+console.log(rFib(4));

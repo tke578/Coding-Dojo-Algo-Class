@@ -1,0 +1,48 @@
+function nodeClass(value){
+  this.val = value;
+  this.next = null;
+}
+
+node1 = new nodeClass(1);
+
+function addFront(firstNode, value){
+  var newNode = new nodeClass(value);
+  newNode.next = firstNode;
+  return newNode;
+}
+
+console.log(addFront(node1,2));
+
+node1.next = node2;
+
+function removeFront(firstNode){
+  if(firstNode){
+    var newNode = firstNode.next;
+    firstNode.next = null;
+    return newNode;
+  }
+  return null;
+}
+console.log(removeFront(node1));
+
+function contains(firstNode,value){
+  var current = firstNode;
+  while(current){
+    if(current.val == value){
+      return true;
+    }
+    current = current.next
+  }
+  return false;
+}
+
+console.log(contains(node1,6));
+
+function front(firstNode){
+  if(firstNode){
+    return firstNode.val;
+  }
+  return null;
+}
+
+console.log(front(node2));

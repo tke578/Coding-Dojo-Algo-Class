@@ -1,0 +1,110 @@
+function splitOnVal(list,value,){
+//   when list is empty
+  if(!list.head){
+   return null;
+  }
+  var currentNode = list.head;
+  if(!currentNode.next){
+    return list;
+  }
+//   when list is greater than 1
+  while(currentNode.next){
+    if(currentNode.next.val === value){
+      tmp = currentNode.next;
+      newList = new listClass();
+      newList.head =tmp;
+      currentNode.next = null;
+     return newList;
+    }
+    currentNode = currentNode.next;
+  }
+}
+console.log(splitOnVal(list, 5));
+
+
+function nodeClass(value){
+  this.val = value;
+  this.next = null;
+}
+
+function listClass(){
+  this.head = null;
+}
+node1 = new nodeClass(5);
+node2 = new nodeClass(10);
+node3 = new nodeClass(15);
+node4 = new nodeClass(25);
+// node5 = new nodeClass(10);
+node1.next = node2;
+node2.next = node3;
+node3.next = node4;
+// node4.next = node5;
+list = new listClass();
+list.head = node1;
+
+
+function partion(list, value){
+  var nodeValue = new nodeClass(value);
+  if(!list.head){
+    return null;
+  }
+  var currentNode = list.head;
+  if(!currentNode.next){
+    return list;
+  }
+  var leftList = new listClass();
+  var rightList = new listClass();
+  while(currentNode){
+    if(currentNode.val < value){
+//       append to leftlist
+      append(leftList, currentNode.val);
+    }else if(currentNode.val > value){
+//       append to rightlist
+      append(rightList, currentNode.val)
+    }
+    currentNode = currentNode.next;
+  }
+//   attach value to head of right list
+  if(rightList.head){
+    tmp = rightList.head
+    nodeValue.next = tmp;
+    rightList.head = nodeValue;
+//     get list head and assign to value
+  }else{
+//     assign rightList.head to value
+   rightList.head = nodeValue;
+  }
+  if(leftList.head){
+//     get last node of left list and assign next to right list
+    var newCurrentNode = leftList.head;
+    while(newCurrentNode){
+      if(!newCurrentNode.next){
+        newCurrentNode.next = rightList.head;
+         return leftList;
+      }
+      newCurrentNode = newCurrentNode.next
+    }
+  }else{
+//     left list is empty and return right list
+    return rightList;
+  }
+  
+}
+
+function append(list,value){
+  var newNode = new nodeClass(value);
+  if(!list.head){
+    list.head = newNode;
+    return list;
+  }
+  var currentNode = list.head
+  while(currentNode){
+   if(!currentNode.next){
+     currentNode.next = newNode;
+      break;
+   }
+   currentNode = currentNode.next;
+  }
+}
+
+console.log(partion(list, 15))

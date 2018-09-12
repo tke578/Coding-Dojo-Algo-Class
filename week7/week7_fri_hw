@@ -1,0 +1,47 @@
+function rTrib(num){
+//   first base case
+  if(num <= 1) {
+    return 0;
+//     second base case
+  }else if(num === 2){
+    return 1;
+  }else{
+    return rTrib(num-1) + rTrib(num-2) + rTrib(num-3);
+  }
+}
+
+console.log(rTrib(3))
+
+function slList(){
+  this.head = null;
+}
+
+function slNode(value){
+  this.val = value;
+  this.next = null;
+}
+
+node1 = new slNode(1);
+node2 = new slNode(2);
+node3 = new slNode(3);
+node4 = new slNode(4);
+node1.next = node2;
+node2.next = node3;
+node3.next = node4;
+var newList = new slList();
+newList.head = node1;
+
+console.log(newList);
+
+function rListLength(node){
+//   assume given first node
+  if(node){
+    if(!node.next){
+      return 1;
+    }else{
+      return 1 + rListLength(node.next);
+    }
+  }
+}
+
+console.log(rListLength(newList.head));

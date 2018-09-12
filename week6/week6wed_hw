@@ -1,0 +1,66 @@
+function appendVal(list,newValue, searchVal){
+//   when list is empty
+  if(!list.head){
+    return null;
+  }
+  var newNode = new dlNode(newValue);
+  var currentNode = list.head;
+  while(currentNode){
+// when value is found
+    if(currentNode.val === searchVal){
+//   when it reaches last node aka tail
+      if(!currentNode.next){
+        tmp = list.tail;
+        currentNode.next = newNode;
+        newNode.prev = tmp;
+        list.tail = newNode;
+        return list;
+      }
+      after = currentNode.next
+      newNode.next = after;
+      newNode.prev = currentNode;
+      currentNode.next = newNode;
+      return list;
+    }
+    currentNode = currentNode.next;
+  }
+  return list;
+}
+console.log(appendVal(list,1.5,8));
+
+function delMiddle(node){
+  before = node.prev;
+  after = node.next;
+  before.next = after;
+  after.prev = before;
+  node.next = null;
+  node.prev = null;
+}
+
+console.log(delMiddle(node3));
+
+
+function reverse(list){
+  if(!list.head){
+    return null;
+  }
+  var head = list.head
+  var currentNode = list.head;
+  var tmp;
+  while(currentNode){
+    tmp = currentNode.prev;
+    currentNode.prev = currentNode.next;
+    currentNode.next = tmp;
+    currentNode = currentNode.prev
+//     reached end of list
+    if(!tmp){
+     list.head = currentNode;
+    }
+    currentNode = tmp;
+  }
+
+  list.head = tmp.prev;
+  return list;
+}
+
+console.log(reverse(list));

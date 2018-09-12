@@ -1,0 +1,90 @@
+function length(firstNode){
+  if(firstNode){
+    var current = firstNode;
+    var nodeSize = 1;
+    while(current){
+      if(current.next != null){
+        current = current.next
+        nodeSize += 1;
+      }
+    }
+    return nodeSize;
+  }
+  return null;
+}
+
+console.log(length(node1));
+
+
+
+function average(node){
+  if(node){
+    var current = node;
+    var length = 0;
+    var sum = 0;
+    while(current){
+      sum += current.val;
+      current = current.next;
+      length += 1; 
+    }
+    return sum/length;
+  }
+}
+
+console.log(average(node1));
+
+
+function min(node){
+  if(node){
+    var current = node;
+    var min = node.val;
+    while(current){
+      if(current.val < min){
+        min = current.val;
+      }
+      current = current.next
+    }
+    return min;
+  }
+  return null;
+}
+
+console.log(min(node1));
+
+function max(node){
+  if(node){
+    var current = node;
+    var max_value = node.val;
+    while(current){
+        if(current.val > max_value){
+          max_value = current.val;
+        }
+      current = current.next
+    }
+    return max_value;
+  }
+  return null;
+}
+
+console.log(max(node1));
+
+
+function display(node){
+  if(node){
+    var objectOfNodes = {};
+    var length = 1;
+    var current = node;
+    var str = "";
+    while(current){
+      objectOfNodes["node"+length] = current.val;
+      length += 1;
+      current = current.next;
+    }
+    for(var key in objectOfNodes){
+       str += "List of nodes " + key + ' value is '+  objectOfNodes[key] + "\n";
+    }
+    return str;
+  }
+}
+
+console.log(display(node1));

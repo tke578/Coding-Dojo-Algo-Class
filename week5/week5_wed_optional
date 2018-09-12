@@ -1,0 +1,160 @@
+function nodeClass(value){
+  this.val = value;
+  this.next = null;
+}
+
+function listClass(){
+  this.head = null;
+}
+node1 = new nodeClass(5);
+node2 = new nodeClass(10);
+node3 = new nodeClass(15);
+node4 = new nodeClass(25);
+node5 = new nodeClass(50);
+node1.next = node2;
+node2.next = node3;
+node3.next = node4;
+// node4.next = node5;
+list = new listClass();
+list.head = node1;
+
+
+// This function appends a new node at EVERY occurnace of before
+function prependVal(list,value,before){
+  var newNode = new nodeClass(value);
+//   when list is empty
+  if(!list.head){
+    list.head = newNode;
+    return newNode;
+  }
+//   when list is size of 1
+  if(list.head.val === before.val){
+    var tmp = list.head;
+    list.head = newNode;
+    newNode.next = tmp;
+    return list;
+  }
+//   when list is greater than 1
+  var currentNode = list.head;
+  var nodeInserted = false;
+  while(currentNode.next){
+    if(currentNode.next.val === before.val){
+      var nextNode = currentNode.next;
+      newNode.next = nextNode;
+      currentNode.next = newNode;
+      currentNode = newNode;
+      nodeInserted = true;
+    }
+    currentNode = currentNode.next;
+  }
+//   check if new node got inserted
+  if(nodeInserted === false){
+    currentNode.next = newNode;
+  }
+
+  return list;
+}
+console.log(prependVal(list, 50,node5));
+
+
+// This function ONLY prepends if value occurs once
+function prependVal(list,value,before){
+  var newNode = new nodeClass(value);
+//   when list is empty
+  if(!list.head){
+    list.head = newNode;
+    return newNode;
+  }
+//   when list is size of 1
+  if(list.head.val === before.val){
+    var tmp = list.head;
+    list.head = newNode;
+    newNode.next = tmp;
+    return list;
+  }
+//   when list is greater than 1
+  var currentNode = list.head;
+  while(currentNode.next){
+    if(currentNode.next.val === before.val){
+      newNode.next = currentNode.next;
+      currentNode.next = newNode;
+      break;
+    }
+    currentNode = currentNode.next;
+  }
+// Make last node point to new node
+  currentNode.next = newNode;
+  return list;
+}
+console.log(prependVal(list, 50,node5));
+
+function removeVal(list,value){
+  var newNode = new nodeClass(value);
+//   when list is empty
+  if(!list.head){
+    return null;
+  }
+   var currentNode = list.head;
+//   when list is size of 1 or 2
+  if(currentNode.val === value){
+    if(currentNode.next){
+      list.head = currentNode.next;
+      currentNode.next = null;
+    }else{
+      list.head = null;
+    }
+    return list;
+  }
+//   when list is greater than 1
+  while(currentNode.next){
+    if(currentNode.next.val == value){
+      if(currentNode.next.next){
+        tmp = currentNode.next.next;
+        currentNode.next = tmp;
+        return list;
+      }
+      currentNode.next = null
+      return list;
+    }
+    currentNode = currentNode.next;
+  }
+  return list;
+}
+console.log(removeVal(list, 25));
+
+function appendVal(list,value,after){
+  var newNode = new nodeClass(value);
+//   when list is empty
+  if(!list.head){
+    list.head = newNode;
+    return newNode;
+  }
+  var currentNode = list.head;
+//   when list is size of 1 or 2
+  if(currentNode.val === after.val){
+    if(currentNode.next){
+      tmp = currentNode.next;
+      currentNode.next = newNode;
+      newNode.next = tmp;
+      return list;
+    }else{
+      currentNode.next = newNode;
+      return list;
+    }
+  }
+//   when list is greater than 1
+  while(currentNode.next){
+    if(currentNode.next.val === after.val){
+      if(currentNode.next.next){
+        tmp = currentNode.next.next;
+        currentNode.next.next = newNode;
+        newNode.next = tmp
+        return list;
+      }
+      currentNode.next.next = newNode;
+      return list;
+    }
+    currentNode = currentNode.next;
+  }
+}
+console.log(appendVal(list, 12,node5));

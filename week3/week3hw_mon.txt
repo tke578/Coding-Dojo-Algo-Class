@@ -1,0 +1,63 @@
+function Arrs2Map(arr1,arr2){
+  if(arr1.length == 0){
+    return null;;
+  }else if(arr1.length != arr2.length){
+    return null
+  }
+  var hash = {};
+  for(var i = 0; i < arr1.length; i++){
+    hash[arr1[i]] = arr2[i];
+  }
+  return hash;
+}
+console.log(Arrs2Map([3,5],['Hi', 'Hello']));
+
+function InvertHash(hash){
+  if(Object.keys(hash).length == 0){
+    return null
+  }
+  var newHash = {};
+  for(var key in hash){
+    
+    newHash[hash[key]] = key;
+  }
+  return newHash;
+}
+
+console.log(InvertHash({abc: '123', 456: 'def'}));
+
+function myJoin(array_of_strings){
+  if(array_of_strings.length == 0){
+    return null;
+  }
+  var newstring = '';
+  for(var i = 0; i < array_of_strings.length; i++){
+    newstring = newstring + array_of_strings[i];
+  }
+  return newstring;
+}
+
+console.log(myJoin(['1','AB','RE']));
+
+function mySplit(str){
+  if(str.length == 0){
+    return null;
+  }
+  var arr = [];
+  for(var i = 0; i < str.length; i++){
+    arr[i] = str[i];
+  }
+  return arr;
+}
+
+console.log(mySplit('1123'));
+
+function reverseString(str){
+  if(str.length == 0){return null;}
+  var newStr = "";
+  for(var i = str.length-1; 0 <= i; i--){
+    newStr = newStr + str[i];
+  }
+  return newStr;
+}
+console.log(reverseString("war"));

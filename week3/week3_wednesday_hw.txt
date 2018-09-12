@@ -1,0 +1,44 @@
+function removeBlanks(str){
+  var new_str = "";
+  for(var i = 0; i < str.length; i++){
+    if(str[i] != " "){
+      new_str += str[i];
+    }
+  }
+  return new_str;
+}
+
+console.log(removeBlanks(" test Test test tset "));
+
+function stringDigits(str){
+  var arrayOfNumbers = [0,1,2,3,4,5,6,7,8,9];
+  var newNumbers = [];
+  for(var i = 0; i < str.length; i++){
+    for(var n = 0; n < arrayOfNumbers.length; n++){
+      if(str[i] == arrayOfNumbers[n]){
+        newNumbers.push(str[i]);
+      }
+    }
+  }
+  if(newNumbers.length == 0){
+    return null;
+  }else{
+    return Number(newNumbers.join(""));
+  }
+  
+}
+
+console.log(stringDigits("abaedcfdsq3"));
+
+function acronyms(str){
+  var split_str = str.split(" ");
+  var new_str = "";
+  for(var i = 0; i < split_str.length; i++){
+    if(split_str[i].length > 0){
+      new_str = new_str + split_str[i][0].toUpperCase();
+    }
+  }
+  return new_str;
+}
+
+console.log(acronyms(' s abcffds 45 re - fds'));

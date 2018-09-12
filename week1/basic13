@@ -1,0 +1,129 @@
+function allNumbers(){
+  for(var i = 1; i < 256; i++){
+    console.log(i);
+  }
+}
+allNumbers();
+
+function allSumNumbers(){
+  var sum = 0;
+  for(var i = 0;i < 256; i++){
+    sum += i;
+    console.log("Current number is " +i);
+    console.log("Current sum so far is " + sum);
+  }
+}
+allSumNumbers();
+
+function maxNumber(array){
+  var max = array[0];
+  for(var i = 0; i < array.length; i++){
+    if(array[i] > max){
+      max = array[i];
+    }
+  }
+  console.log("Max number in array is " + max);
+}
+maxNumber([300,4,9,10]);
+
+function odds(){
+  var oddsArray = [];
+  for(var i = 1; i < 256; i++){
+    if(i % 2 !== 0){
+      oddsArray.push(i);
+    }
+  }
+  console.log("This is the odds array");
+  console.log(oddsArray);
+}
+odds();
+
+function theGreatestNumbers(array,y){
+  for(var i = 0; i < array.length; i++){
+    if(array[i] > y){
+      console.log("The array element of " + array[i] + " is bigger " + y);
+    }
+  }
+}
+theGreatestNumbers([3,4,9,19,28], 8);
+
+function maxMinAvg(array){
+  var max = array[0];
+  var min = array[0];
+  var sum = 0;
+  for(var i = 0; i < array.length; i++){
+    if(array[i] > max){
+      max = array[i]
+    }
+    if(array[i] < min){
+      min = array[i];
+    }
+    sum += array[i];
+  }
+  console.log("The max number from the array is " + max);
+  console.log("The min number from the array is " + min);
+  console.log("The average values from the arrary is " + sum/array.length);
+}
+maxMinAvg([0,0]);
+
+function negativeStrings(array){
+  for(var i = 0; i < array.length; i++){
+    if(array[i] < 0){
+      array[i] = 'Dojo';
+    }
+  }
+  console.log("The new array " + array);
+}
+negativeStrings([-1,2,8,-3,8,-0,39,-80]);
+
+function allOdds(){
+  for(var i = 1; i < 256; i++){
+    if(i % 2 !== 0){
+      console.log("Current odd number is " + i);
+    }
+  }
+}
+allOdds();
+
+function print(arry){
+  for(var i = 0; i < arry.length; i++){
+    console.log("Current item is " + arry[i]);
+  }
+}
+print([3,2,8,-9]);
+
+function avg(arry){
+  var sum = 0;
+  for(var i = 0; i < arry.length; i++){
+    sum += arry[i];
+  }
+  console.log("The average value is " + sum/arry.length);
+}
+avg([5,10,15]);
+
+function squared(arry){
+  for(var i = 0; i < arry.length; i++){
+    arry[i] = arry[i] ** 2;
+  }
+  console.log("The new squared values "+ arry);
+}
+squared([2,1,4, -6]);
+
+function zeroNegative(arry){
+  for(var i = 0; i < arry.length; i++){
+    if(arry[i] < 0){
+      arry[i] = 0;
+    }
+  }
+  console.log("All negative values are zeros " + arry);
+}
+zeroNegative([2,3,-9,0,2,-6,2,-5]);
+
+function shiftValues(arry){
+  for(var i = 0; i < arry.length - 1; i++){
+    arry[i] = arry[i+1];
+  }
+  arry[arry.length] = 0;
+  console.log("The new values have been shifted " + arry);
+}
+shiftValues([2,4,6,9,5]);
